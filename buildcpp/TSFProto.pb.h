@@ -401,6 +401,7 @@ class SpotList : public ::google::protobuf::Message {
   inline bool is_track() const;
   inline void set_is_track(bool value);
 
+  GOOGLE_PROTOBUF_EXTENSION_ACCESSORS(SpotList)
   // @@protoc_insertion_point(class_scope:TSF.SpotList)
  private:
   inline void set_has_application_id();
@@ -437,6 +438,8 @@ class SpotList : public ::google::protobuf::Message {
   inline void clear_has_fit_mode();
   inline void set_has_is_track();
   inline void clear_has_is_track();
+
+  ::google::protobuf::internal::ExtensionSet _extensions_;
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 

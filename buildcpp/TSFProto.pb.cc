@@ -87,7 +87,7 @@ void protobuf_AssignDesc_TSFProto_2eproto() {
       SpotList_offsets_,
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, _has_bits_[0]),
       GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, _unknown_fields_),
-      -1,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, _extensions_),
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SpotList));
@@ -173,7 +173,7 @@ void protobuf_AddDesc_TSFProto_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\016TSFProto.proto\022\003TSF\"G\n\017FluorophoreType"
     "\022\n\n\002id\030\001 \002(\005\022\023\n\013description\030\002 \001(\t\022\023\n\013is_"
-    "fiducial\030\003 \001(\010\"\303\003\n\010SpotList\022\031\n\016applicati"
+    "fiducial\030\003 \001(\010\"\313\003\n\010SpotList\022\031\n\016applicati"
     "on_id\030\001 \002(\005:\0011\022\014\n\004name\030\002 \001(\t\022\020\n\010filepath"
     "\030\003 \001(\t\022\013\n\003uid\030\004 \001(\003\022\023\n\013nr_pixels_x\030\005 \001(\005"
     "\022\023\n\013nr_pixels_y\030\006 \001(\005\022\022\n\npixel_size\030\007 \001("
@@ -184,24 +184,25 @@ void protobuf_AddDesc_TSFProto_2eproto() {
     "e\022*\n\016location_units\030\026 \001(\0162\022.TSF.Location"
     "Units\022,\n\017intensity_units\030\027 \001(\0162\023.TSF.Int"
     "ensityUnits\022\036\n\010fit_mode\030\030 \001(\0162\014.TSF.FitM"
-    "ode\022\027\n\010is_track\030\031 \001(\010:\005false\"\365\003\n\004Spot\022\020\n"
-    "\010molecule\030\001 \002(\005\022\017\n\007channel\030\002 \002(\005\022\r\n\005fram"
-    "e\030\003 \002(\005\022\r\n\005slice\030\004 \001(\005\022\013\n\003pos\030\005 \001(\005\022\030\n\020f"
-    "luorophore_type\030\023 \001(\005\022\017\n\007cluster\030\024 \001(\005\022*"
-    "\n\016location_units\030\021 \001(\0162\022.TSF.LocationUni"
-    "ts\022\t\n\001x\030\007 \002(\002\022\t\n\001y\030\010 \002(\002\022\t\n\001z\030\t \001(\002\022,\n\017i"
-    "ntensity_units\030\022 \001(\0162\023.TSF.IntensityUnit"
-    "s\022\021\n\tintensity\030\n \002(\002\022\022\n\nbackground\030\013 \001(\002"
-    "\022\r\n\005width\030\014 \001(\002\022\t\n\001a\030\r \001(\002\022\r\n\005theta\030\016 \001("
-    "\002\022\022\n\nx_original\030e \001(\002\022\022\n\ny_original\030f \001("
-    "\002\022\022\n\nz_original\030g \001(\002\022\023\n\013x_precision\030h \001"
-    "(\002\022\023\n\013y_precision\030i \001(\002\022\023\n\013z_precision\030j"
-    " \001(\002\022\022\n\nx_position\030k \001(\005\022\022\n\ny_position\030l"
-    " \001(\005*\006\010\334\013\020\200\020*8\n\007FitMode\022\013\n\007ONEAXIS\020\000\022\013\n\007"
-    "TWOAXIS\020\001\022\023\n\017TWOAXISANDTHETA\020\002*)\n\016Intens"
-    "ityUnits\022\n\n\006COUNTS\020\000\022\013\n\007PHOTONS\020\001*+\n\rLoc"
-    "ationUnits\022\006\n\002NM\020\000\022\006\n\002UM\020\001\022\n\n\006PIXELS\020\002B!"
-    "\n\014edu.ucsf.tsfB\021TaggedSpotsProtos", 1233);
+    "ode\022\027\n\010is_track\030\031 \001(\010:\005false*\006\010\334\013\020\200\020\"\365\003\n"
+    "\004Spot\022\020\n\010molecule\030\001 \002(\005\022\017\n\007channel\030\002 \002(\005"
+    "\022\r\n\005frame\030\003 \002(\005\022\r\n\005slice\030\004 \001(\005\022\013\n\003pos\030\005 "
+    "\001(\005\022\030\n\020fluorophore_type\030\023 \001(\005\022\017\n\007cluster"
+    "\030\024 \001(\005\022*\n\016location_units\030\021 \001(\0162\022.TSF.Loc"
+    "ationUnits\022\t\n\001x\030\007 \002(\002\022\t\n\001y\030\010 \002(\002\022\t\n\001z\030\t "
+    "\001(\002\022,\n\017intensity_units\030\022 \001(\0162\023.TSF.Inten"
+    "sityUnits\022\021\n\tintensity\030\n \002(\002\022\022\n\nbackgrou"
+    "nd\030\013 \001(\002\022\r\n\005width\030\014 \001(\002\022\t\n\001a\030\r \001(\002\022\r\n\005th"
+    "eta\030\016 \001(\002\022\022\n\nx_original\030e \001(\002\022\022\n\ny_origi"
+    "nal\030f \001(\002\022\022\n\nz_original\030g \001(\002\022\023\n\013x_preci"
+    "sion\030h \001(\002\022\023\n\013y_precision\030i \001(\002\022\023\n\013z_pre"
+    "cision\030j \001(\002\022\022\n\nx_position\030k \001(\005\022\022\n\ny_po"
+    "sition\030l \001(\005*\006\010\334\013\020\200\020*8\n\007FitMode\022\013\n\007ONEAX"
+    "IS\020\000\022\013\n\007TWOAXIS\020\001\022\023\n\017TWOAXISANDTHETA\020\002*)"
+    "\n\016IntensityUnits\022\n\n\006COUNTS\020\000\022\013\n\007PHOTONS\020"
+    "\001*+\n\rLocationUnits\022\006\n\002NM\020\000\022\006\n\002UM\020\001\022\n\n\006PI"
+    "XELS\020\002B!\n\014edu.ucsf.tsfB\021TaggedSpotsProto"
+    "s", 1241);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "TSFProto.proto", &protobuf_RegisterTypes);
   FluorophoreType::default_instance_ = new FluorophoreType();
@@ -664,6 +665,7 @@ SpotList* SpotList::New() const {
 }
 
 void SpotList::Clear() {
+  _extensions_.Clear();
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     application_id_ = 1;
     if (has_name()) {
@@ -1015,6 +1017,11 @@ bool SpotList::MergePartialFromCodedStream(
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
           return true;
         }
+        if ((12000u <= tag && tag < 16384u)) {
+          DO_(_extensions_.ParseField(tag, input, default_instance_,
+                                      mutable_unknown_fields()));
+          continue;
+        }
         DO_(::google::protobuf::internal::WireFormat::SkipField(
               input, tag, mutable_unknown_fields()));
         break;
@@ -1129,6 +1136,10 @@ void SpotList::SerializeWithCachedSizes(
       26, this->fluorophore_types(i), output);
   }
 
+  // Extension range [1500, 2048)
+  _extensions_.SerializeWithCachedSizes(
+      1500, 2048, output);
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1241,6 +1252,10 @@ void SpotList::SerializeWithCachedSizes(
       WriteMessageNoVirtualToArray(
         26, this->fluorophore_types(i), target);
   }
+
+  // Extension range [1500, 2048)
+  target = _extensions_.SerializeWithCachedSizesToArray(
+      1500, 2048, target);
 
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
@@ -1378,6 +1393,8 @@ int SpotList::ByteSize() const {
         this->fluorophore_types(i));
   }
 
+  total_size += _extensions_.ByteSize();
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1461,6 +1478,7 @@ void SpotList::MergeFrom(const SpotList& from) {
       set_is_track(from.is_track());
     }
   }
+  _extensions_.MergeFrom(from._extensions_);
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
@@ -1482,7 +1500,8 @@ bool SpotList::IsInitialized() const {
   for (int i = 0; i < fluorophore_types_size(); i++) {
     if (!this->fluorophore_types(i).IsInitialized()) return false;
   }
-  return true;
+
+  if (!_extensions_.IsInitialized()) return false;  return true;
 }
 
 void SpotList::Swap(SpotList* other) {
@@ -1508,6 +1527,7 @@ void SpotList::Swap(SpotList* other) {
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
+    _extensions_.Swap(&other->_extensions_);
   }
 }
 
