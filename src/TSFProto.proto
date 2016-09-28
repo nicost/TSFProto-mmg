@@ -69,8 +69,8 @@ message SpotList {
    optional FitMode fit_mode = 24;
    optional bool is_track = 25 [default = false]; // flag indicating whether this is a sequence of spot data in consecutive time frames thought to originate from the same entity
 
-   //repeated Spot spot = 8;
-
+   // These ids can be used in your own .proto derived from this one
+   extensions 1500 to 2047;
       
 }
    
