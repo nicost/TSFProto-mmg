@@ -35,6 +35,7 @@ void protobuf_AssignDesc_TSFProto_2eproto();
 void protobuf_ShutdownFile_TSFProto_2eproto();
 
 class FluorophoreType;
+class ROI;
 class SpotList;
 class Spot;
 
@@ -57,6 +58,25 @@ inline bool FitMode_Parse(
     const ::std::string& name, FitMode* value) {
   return ::google::protobuf::internal::ParseNamedEnum<FitMode>(
     FitMode_descriptor(), name, value);
+}
+enum ThetaUnits {
+  DEGREES = 0,
+  RADIANS = 1
+};
+bool ThetaUnits_IsValid(int value);
+const ThetaUnits ThetaUnits_MIN = DEGREES;
+const ThetaUnits ThetaUnits_MAX = RADIANS;
+const int ThetaUnits_ARRAYSIZE = ThetaUnits_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* ThetaUnits_descriptor();
+inline const ::std::string& ThetaUnits_Name(ThetaUnits value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    ThetaUnits_descriptor(), value);
+}
+inline bool ThetaUnits_Parse(
+    const ::std::string& name, ThetaUnits* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<ThetaUnits>(
+    ThetaUnits_descriptor(), name, value);
 }
 enum IntensityUnits {
   COUNTS = 0,
@@ -203,6 +223,118 @@ class FluorophoreType : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static FluorophoreType* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ROI : public ::google::protobuf::Message {
+ public:
+  ROI();
+  virtual ~ROI();
+
+  ROI(const ROI& from);
+
+  inline ROI& operator=(const ROI& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ROI& default_instance();
+
+  void Swap(ROI* other);
+
+  // implements Message ----------------------------------------------
+
+  ROI* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ROI& from);
+  void MergeFrom(const ROI& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 x = 1;
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 1;
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
+
+  // required int32 y = 2;
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 2;
+  inline ::google::protobuf::int32 y() const;
+  inline void set_y(::google::protobuf::int32 value);
+
+  // required int32 x_width = 3;
+  inline bool has_x_width() const;
+  inline void clear_x_width();
+  static const int kXWidthFieldNumber = 3;
+  inline ::google::protobuf::int32 x_width() const;
+  inline void set_x_width(::google::protobuf::int32 value);
+
+  // required int32 y_width = 4;
+  inline bool has_y_width() const;
+  inline void clear_y_width();
+  static const int kYWidthFieldNumber = 4;
+  inline ::google::protobuf::int32 y_width() const;
+  inline void set_y_width(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TSF.ROI)
+ private:
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_x_width();
+  inline void clear_has_x_width();
+  inline void set_has_y_width();
+  inline void clear_has_y_width();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 x_width_;
+  ::google::protobuf::int32 y_width_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TSFProto_2eproto();
+  friend void protobuf_AssignDesc_TSFProto_2eproto();
+  friend void protobuf_ShutdownFile_TSFProto_2eproto();
+
+  void InitAsDefaultInstance();
+  static ROI* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -387,6 +519,13 @@ class SpotList : public ::google::protobuf::Message {
   inline ::TSF::IntensityUnits intensity_units() const;
   inline void set_intensity_units(::TSF::IntensityUnits value);
 
+  // optional .TSF.ThetaUnits theta_units = 27;
+  inline bool has_theta_units() const;
+  inline void clear_theta_units();
+  static const int kThetaUnitsFieldNumber = 27;
+  inline ::TSF::ThetaUnits theta_units() const;
+  inline void set_theta_units(::TSF::ThetaUnits value);
+
   // optional .TSF.FitMode fit_mode = 24;
   inline bool has_fit_mode() const;
   inline void clear_fit_mode();
@@ -400,6 +539,22 @@ class SpotList : public ::google::protobuf::Message {
   static const int kIsTrackFieldNumber = 25;
   inline bool is_track() const;
   inline void set_is_track(bool value);
+
+  // optional double ecf = 28;
+  inline bool has_ecf() const;
+  inline void clear_ecf();
+  static const int kEcfFieldNumber = 28;
+  inline double ecf() const;
+  inline void set_ecf(double value);
+
+  // optional .TSF.ROI roi = 29;
+  inline bool has_roi() const;
+  inline void clear_roi();
+  static const int kRoiFieldNumber = 29;
+  inline const ::TSF::ROI& roi() const;
+  inline ::TSF::ROI* mutable_roi();
+  inline ::TSF::ROI* release_roi();
+  inline void set_allocated_roi(::TSF::ROI* roi);
 
   GOOGLE_PROTOBUF_EXTENSION_ACCESSORS(SpotList)
   // @@protoc_insertion_point(class_scope:TSF.SpotList)
@@ -434,10 +589,16 @@ class SpotList : public ::google::protobuf::Message {
   inline void clear_has_location_units();
   inline void set_has_intensity_units();
   inline void clear_has_intensity_units();
+  inline void set_has_theta_units();
+  inline void clear_has_theta_units();
   inline void set_has_fit_mode();
   inline void clear_has_fit_mode();
   inline void set_has_is_track();
   inline void clear_has_is_track();
+  inline void set_has_ecf();
+  inline void clear_has_ecf();
+  inline void set_has_roi();
+  inline void clear_has_roi();
 
   ::google::protobuf::internal::ExtensionSet _extensions_;
 
@@ -459,11 +620,14 @@ class SpotList : public ::google::protobuf::Message {
   ::google::protobuf::int32 nr_pos_;
   int location_units_;
   int intensity_units_;
+  int theta_units_;
   int fit_mode_;
   bool is_track_;
+  double ecf_;
+  ::TSF::ROI* roi_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(18 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(21 + 31) / 32];
 
   friend void  protobuf_AddDesc_TSFProto_2eproto();
   friend void protobuf_AssignDesc_TSFProto_2eproto();
@@ -916,6 +1080,98 @@ inline bool FluorophoreType::is_fiducial() const {
 inline void FluorophoreType::set_is_fiducial(bool value) {
   set_has_is_fiducial();
   is_fiducial_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ROI
+
+// required int32 x = 1;
+inline bool ROI::has_x() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ROI::set_has_x() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ROI::clear_has_x() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ROI::clear_x() {
+  x_ = 0;
+  clear_has_x();
+}
+inline ::google::protobuf::int32 ROI::x() const {
+  return x_;
+}
+inline void ROI::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+}
+
+// required int32 y = 2;
+inline bool ROI::has_y() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ROI::set_has_y() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ROI::clear_has_y() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ROI::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 ROI::y() const {
+  return y_;
+}
+inline void ROI::set_y(::google::protobuf::int32 value) {
+  set_has_y();
+  y_ = value;
+}
+
+// required int32 x_width = 3;
+inline bool ROI::has_x_width() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ROI::set_has_x_width() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ROI::clear_has_x_width() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ROI::clear_x_width() {
+  x_width_ = 0;
+  clear_has_x_width();
+}
+inline ::google::protobuf::int32 ROI::x_width() const {
+  return x_width_;
+}
+inline void ROI::set_x_width(::google::protobuf::int32 value) {
+  set_has_x_width();
+  x_width_ = value;
+}
+
+// required int32 y_width = 4;
+inline bool ROI::has_y_width() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ROI::set_has_y_width() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ROI::clear_has_y_width() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ROI::clear_y_width() {
+  y_width_ = 0;
+  clear_has_y_width();
+}
+inline ::google::protobuf::int32 ROI::y_width() const {
+  return y_width_;
+}
+inline void ROI::set_y_width(::google::protobuf::int32 value) {
+  set_has_y_width();
+  y_width_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -1375,15 +1631,38 @@ inline void SpotList::set_intensity_units(::TSF::IntensityUnits value) {
   intensity_units_ = value;
 }
 
-// optional .TSF.FitMode fit_mode = 24;
-inline bool SpotList::has_fit_mode() const {
+// optional .TSF.ThetaUnits theta_units = 27;
+inline bool SpotList::has_theta_units() const {
   return (_has_bits_[0] & 0x00010000u) != 0;
 }
-inline void SpotList::set_has_fit_mode() {
+inline void SpotList::set_has_theta_units() {
   _has_bits_[0] |= 0x00010000u;
 }
-inline void SpotList::clear_has_fit_mode() {
+inline void SpotList::clear_has_theta_units() {
   _has_bits_[0] &= ~0x00010000u;
+}
+inline void SpotList::clear_theta_units() {
+  theta_units_ = 0;
+  clear_has_theta_units();
+}
+inline ::TSF::ThetaUnits SpotList::theta_units() const {
+  return static_cast< ::TSF::ThetaUnits >(theta_units_);
+}
+inline void SpotList::set_theta_units(::TSF::ThetaUnits value) {
+  assert(::TSF::ThetaUnits_IsValid(value));
+  set_has_theta_units();
+  theta_units_ = value;
+}
+
+// optional .TSF.FitMode fit_mode = 24;
+inline bool SpotList::has_fit_mode() const {
+  return (_has_bits_[0] & 0x00020000u) != 0;
+}
+inline void SpotList::set_has_fit_mode() {
+  _has_bits_[0] |= 0x00020000u;
+}
+inline void SpotList::clear_has_fit_mode() {
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline void SpotList::clear_fit_mode() {
   fit_mode_ = 0;
@@ -1400,13 +1679,13 @@ inline void SpotList::set_fit_mode(::TSF::FitMode value) {
 
 // optional bool is_track = 25 [default = false];
 inline bool SpotList::has_is_track() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void SpotList::set_has_is_track() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 inline void SpotList::clear_has_is_track() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline void SpotList::clear_is_track() {
   is_track_ = false;
@@ -1418,6 +1697,66 @@ inline bool SpotList::is_track() const {
 inline void SpotList::set_is_track(bool value) {
   set_has_is_track();
   is_track_ = value;
+}
+
+// optional double ecf = 28;
+inline bool SpotList::has_ecf() const {
+  return (_has_bits_[0] & 0x00080000u) != 0;
+}
+inline void SpotList::set_has_ecf() {
+  _has_bits_[0] |= 0x00080000u;
+}
+inline void SpotList::clear_has_ecf() {
+  _has_bits_[0] &= ~0x00080000u;
+}
+inline void SpotList::clear_ecf() {
+  ecf_ = 0;
+  clear_has_ecf();
+}
+inline double SpotList::ecf() const {
+  return ecf_;
+}
+inline void SpotList::set_ecf(double value) {
+  set_has_ecf();
+  ecf_ = value;
+}
+
+// optional .TSF.ROI roi = 29;
+inline bool SpotList::has_roi() const {
+  return (_has_bits_[0] & 0x00100000u) != 0;
+}
+inline void SpotList::set_has_roi() {
+  _has_bits_[0] |= 0x00100000u;
+}
+inline void SpotList::clear_has_roi() {
+  _has_bits_[0] &= ~0x00100000u;
+}
+inline void SpotList::clear_roi() {
+  if (roi_ != NULL) roi_->::TSF::ROI::Clear();
+  clear_has_roi();
+}
+inline const ::TSF::ROI& SpotList::roi() const {
+  return roi_ != NULL ? *roi_ : *default_instance_->roi_;
+}
+inline ::TSF::ROI* SpotList::mutable_roi() {
+  set_has_roi();
+  if (roi_ == NULL) roi_ = new ::TSF::ROI;
+  return roi_;
+}
+inline ::TSF::ROI* SpotList::release_roi() {
+  clear_has_roi();
+  ::TSF::ROI* temp = roi_;
+  roi_ = NULL;
+  return temp;
+}
+inline void SpotList::set_allocated_roi(::TSF::ROI* roi) {
+  delete roi_;
+  roi_ = roi;
+  if (roi) {
+    set_has_roi();
+  } else {
+    clear_has_roi();
+  }
 }
 
 // -------------------------------------------------------------------
@@ -1988,6 +2327,10 @@ namespace protobuf {
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::TSF::FitMode>() {
   return ::TSF::FitMode_descriptor();
+}
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::TSF::ThetaUnits>() {
+  return ::TSF::ThetaUnits_descriptor();
 }
 template <>
 inline const EnumDescriptor* GetEnumDescriptor< ::TSF::IntensityUnits>() {
