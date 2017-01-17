@@ -82,7 +82,7 @@ void protobuf_AssignDesc_TSFProto_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(ROI));
   SpotList_descriptor_ = file->message_type(2);
-  static const int SpotList_offsets_[21] = {
+  static const int SpotList_offsets_[22] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, application_id_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, name_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, filepath_),
@@ -103,6 +103,7 @@ void protobuf_AssignDesc_TSFProto_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, fit_mode_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, is_track_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, ecf_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, qe_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SpotList, roi_),
   };
   SpotList_reflection_ =
@@ -204,7 +205,7 @@ void protobuf_AddDesc_TSFProto_2eproto() {
     "\n\016TSFProto.proto\022\003TSF\"G\n\017FluorophoreType"
     "\022\n\n\002id\030\001 \002(\005\022\023\n\013description\030\002 \001(\t\022\023\n\013is_"
     "fiducial\030\003 \001(\010\"=\n\003ROI\022\t\n\001x\030\001 \002(\005\022\t\n\001y\030\002 "
-    "\002(\005\022\017\n\007x_width\030\003 \002(\005\022\017\n\007y_width\030\004 \002(\005\"\225\004"
+    "\002(\005\022\017\n\007x_width\030\003 \002(\005\022\017\n\007y_width\030\004 \002(\005\"\241\004"
     "\n\010SpotList\022\031\n\016application_id\030\001 \002(\005:\0011\022\014\n"
     "\004name\030\002 \001(\t\022\020\n\010filepath\030\003 \001(\t\022\013\n\003uid\030\004 \001"
     "(\003\022\023\n\013nr_pixels_x\030\005 \001(\005\022\023\n\013nr_pixels_y\030\006"
@@ -217,26 +218,26 @@ void protobuf_AddDesc_TSFProto_2eproto() {
     "y_units\030\027 \001(\0162\023.TSF.IntensityUnits\022$\n\013th"
     "eta_units\030\033 \001(\0162\017.TSF.ThetaUnits\022\036\n\010fit_"
     "mode\030\030 \001(\0162\014.TSF.FitMode\022\027\n\010is_track\030\031 \001"
-    "(\010:\005false\022\013\n\003ecf\030\034 \001(\001\022\025\n\003roi\030\035 \001(\0132\010.TS"
-    "F.ROI*\006\010\334\013\020\200\020\"\365\003\n\004Spot\022\020\n\010molecule\030\001 \002(\005"
-    "\022\017\n\007channel\030\002 \002(\005\022\r\n\005frame\030\003 \002(\005\022\r\n\005slic"
-    "e\030\004 \001(\005\022\013\n\003pos\030\005 \001(\005\022\030\n\020fluorophore_type"
-    "\030\023 \001(\005\022\017\n\007cluster\030\024 \001(\005\022*\n\016location_unit"
-    "s\030\021 \001(\0162\022.TSF.LocationUnits\022\t\n\001x\030\007 \002(\002\022\t"
-    "\n\001y\030\010 \002(\002\022\t\n\001z\030\t \001(\002\022,\n\017intensity_units\030"
-    "\022 \001(\0162\023.TSF.IntensityUnits\022\021\n\tintensity\030"
-    "\n \002(\002\022\022\n\nbackground\030\013 \001(\002\022\r\n\005width\030\014 \001(\002"
-    "\022\t\n\001a\030\r \001(\002\022\r\n\005theta\030\016 \001(\002\022\022\n\nx_original"
-    "\030e \001(\002\022\022\n\ny_original\030f \001(\002\022\022\n\nz_original"
-    "\030g \001(\002\022\023\n\013x_precision\030h \001(\002\022\023\n\013y_precisi"
-    "on\030i \001(\002\022\023\n\013z_precision\030j \001(\002\022\022\n\nx_posit"
-    "ion\030k \001(\005\022\022\n\ny_position\030l \001(\005*\006\010\334\013\020\200\020*8\n"
-    "\007FitMode\022\013\n\007ONEAXIS\020\000\022\013\n\007TWOAXIS\020\001\022\023\n\017TW"
-    "OAXISANDTHETA\020\002*&\n\nThetaUnits\022\013\n\007DEGREES"
-    "\020\000\022\013\n\007RADIANS\020\001*)\n\016IntensityUnits\022\n\n\006COU"
-    "NTS\020\000\022\013\n\007PHOTONS\020\001*+\n\rLocationUnits\022\006\n\002N"
-    "M\020\000\022\006\n\002UM\020\001\022\n\n\006PIXELS\020\002B!\n\014edu.ucsf.tsfB"
-    "\021TaggedSpotsProtos", 1418);
+    "(\010:\005false\022\013\n\003ecf\030\034 \003(\001\022\n\n\002qe\030\036 \003(\001\022\025\n\003ro"
+    "i\030\035 \001(\0132\010.TSF.ROI*\006\010\334\013\020\200\020\"\365\003\n\004Spot\022\020\n\010mo"
+    "lecule\030\001 \002(\005\022\017\n\007channel\030\002 \002(\005\022\r\n\005frame\030\003"
+    " \002(\005\022\r\n\005slice\030\004 \001(\005\022\013\n\003pos\030\005 \001(\005\022\030\n\020fluo"
+    "rophore_type\030\023 \001(\005\022\017\n\007cluster\030\024 \001(\005\022*\n\016l"
+    "ocation_units\030\021 \001(\0162\022.TSF.LocationUnits\022"
+    "\t\n\001x\030\007 \002(\002\022\t\n\001y\030\010 \002(\002\022\t\n\001z\030\t \001(\002\022,\n\017inte"
+    "nsity_units\030\022 \001(\0162\023.TSF.IntensityUnits\022\021"
+    "\n\tintensity\030\n \002(\002\022\022\n\nbackground\030\013 \001(\002\022\r\n"
+    "\005width\030\014 \001(\002\022\t\n\001a\030\r \001(\002\022\r\n\005theta\030\016 \001(\002\022\022"
+    "\n\nx_original\030e \001(\002\022\022\n\ny_original\030f \001(\002\022\022"
+    "\n\nz_original\030g \001(\002\022\023\n\013x_precision\030h \001(\002\022"
+    "\023\n\013y_precision\030i \001(\002\022\023\n\013z_precision\030j \001("
+    "\002\022\022\n\nx_position\030k \001(\005\022\022\n\ny_position\030l \001("
+    "\005*\006\010\334\013\020\200\020*8\n\007FitMode\022\013\n\007ONEAXIS\020\000\022\013\n\007TWO"
+    "AXIS\020\001\022\023\n\017TWOAXISANDTHETA\020\002*&\n\nThetaUnit"
+    "s\022\013\n\007DEGREES\020\000\022\013\n\007RADIANS\020\001*)\n\016Intensity"
+    "Units\022\n\n\006COUNTS\020\000\022\013\n\007PHOTONS\020\001*+\n\rLocati"
+    "onUnits\022\006\n\002NM\020\000\022\006\n\002UM\020\001\022\n\n\006PIXELS\020\002B!\n\014e"
+    "du.ucsf.tsfB\021TaggedSpotsProtos", 1430);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "TSFProto.proto", &protobuf_RegisterTypes);
   FluorophoreType::default_instance_ = new FluorophoreType();
@@ -971,6 +972,7 @@ const int SpotList::kThetaUnitsFieldNumber;
 const int SpotList::kFitModeFieldNumber;
 const int SpotList::kIsTrackFieldNumber;
 const int SpotList::kEcfFieldNumber;
+const int SpotList::kQeFieldNumber;
 const int SpotList::kRoiFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1009,7 +1011,6 @@ void SpotList::SharedCtor() {
   theta_units_ = 0;
   fit_mode_ = 0;
   is_track_ = false;
-  ecf_ = 0;
   roi_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -1084,12 +1085,13 @@ void SpotList::Clear() {
     theta_units_ = 0;
     fit_mode_ = 0;
     is_track_ = false;
-    ecf_ = 0;
     if (has_roi()) {
       if (roi_ != NULL) roi_->::TSF::ROI::Clear();
     }
   }
   fluorophore_types_.Clear();
+  ecf_.Clear();
+  qe_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1424,18 +1426,24 @@ bool SpotList::MergePartialFromCodedStream(
         break;
       }
 
-      // optional double ecf = 28;
+      // repeated double ecf = 28;
       case 28: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_ecf:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
                    double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &ecf_)));
-          set_has_ecf();
+                 2, 225, input, this->mutable_ecf())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, this->mutable_ecf())));
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(225)) goto parse_ecf;
         if (input->ExpectTag(234)) goto parse_roi;
         break;
       }
@@ -1450,6 +1458,28 @@ bool SpotList::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(241)) goto parse_qe;
+        break;
+      }
+
+      // repeated double qe = 30;
+      case 30: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
+         parse_qe:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 2, 241, input, this->mutable_qe())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
+                 input, this->mutable_qe())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(241)) goto parse_qe;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1585,15 +1615,22 @@ void SpotList::SerializeWithCachedSizes(
       27, this->theta_units(), output);
   }
 
-  // optional double ecf = 28;
-  if (has_ecf()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(28, this->ecf(), output);
+  // repeated double ecf = 28;
+  for (int i = 0; i < this->ecf_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(
+      28, this->ecf(i), output);
   }
 
   // optional .TSF.ROI roi = 29;
   if (has_roi()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       29, this->roi(), output);
+  }
+
+  // repeated double qe = 30;
+  for (int i = 0; i < this->qe_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(
+      30, this->qe(i), output);
   }
 
   // Extension range [1500, 2048)
@@ -1719,9 +1756,10 @@ void SpotList::SerializeWithCachedSizes(
       27, this->theta_units(), target);
   }
 
-  // optional double ecf = 28;
-  if (has_ecf()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(28, this->ecf(), target);
+  // repeated double ecf = 28;
+  for (int i = 0; i < this->ecf_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteDoubleToArray(28, this->ecf(i), target);
   }
 
   // optional .TSF.ROI roi = 29;
@@ -1729,6 +1767,12 @@ void SpotList::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         29, this->roi(), target);
+  }
+
+  // repeated double qe = 30;
+  for (int i = 0; i < this->qe_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteDoubleToArray(30, this->qe(i), target);
   }
 
   // Extension range [1500, 2048)
@@ -1868,11 +1912,6 @@ int SpotList::ByteSize() const {
       total_size += 2 + 1;
     }
 
-    // optional double ecf = 28;
-    if (has_ecf()) {
-      total_size += 2 + 8;
-    }
-
     // optional .TSF.ROI roi = 29;
     if (has_roi()) {
       total_size += 2 +
@@ -1887,6 +1926,20 @@ int SpotList::ByteSize() const {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->fluorophore_types(i));
+  }
+
+  // repeated double ecf = 28;
+  {
+    int data_size = 0;
+    data_size = 8 * this->ecf_size();
+    total_size += 2 * this->ecf_size() + data_size;
+  }
+
+  // repeated double qe = 30;
+  {
+    int data_size = 0;
+    data_size = 8 * this->qe_size();
+    total_size += 2 * this->qe_size() + data_size;
   }
 
   total_size += _extensions_.ByteSize();
@@ -1917,6 +1970,8 @@ void SpotList::MergeFrom(const ::google::protobuf::Message& from) {
 void SpotList::MergeFrom(const SpotList& from) {
   GOOGLE_CHECK_NE(&from, this);
   fluorophore_types_.MergeFrom(from.fluorophore_types_);
+  ecf_.MergeFrom(from.ecf_);
+  qe_.MergeFrom(from.qe_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_application_id()) {
       set_application_id(from.application_id());
@@ -1976,9 +2031,6 @@ void SpotList::MergeFrom(const SpotList& from) {
     if (from.has_is_track()) {
       set_is_track(from.is_track());
     }
-    if (from.has_ecf()) {
-      set_ecf(from.ecf());
-    }
     if (from.has_roi()) {
       mutable_roi()->::TSF::ROI::MergeFrom(from.roi());
     }
@@ -2033,7 +2085,8 @@ void SpotList::Swap(SpotList* other) {
     std::swap(theta_units_, other->theta_units_);
     std::swap(fit_mode_, other->fit_mode_);
     std::swap(is_track_, other->is_track_);
-    std::swap(ecf_, other->ecf_);
+    ecf_.Swap(&other->ecf_);
+    qe_.Swap(&other->qe_);
     std::swap(roi_, other->roi_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

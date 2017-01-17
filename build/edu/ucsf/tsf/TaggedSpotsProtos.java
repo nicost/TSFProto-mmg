@@ -2094,25 +2094,81 @@ public final class TaggedSpotsProtos {
      */
     boolean getIsTrack();
 
-    // optional double ecf = 28;
+    // repeated double ecf = 28;
     /**
-     * <code>optional double ecf = 28;</code>
+     * <code>repeated double ecf = 28;</code>
      *
      * <pre>
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
+     * The ecf can be different for different channels (which can 
+     * happen when separate cameras are used for seperate channels),
+     * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
-    boolean hasEcf();
+    java.util.List<java.lang.Double> getEcfList();
     /**
-     * <code>optional double ecf = 28;</code>
+     * <code>repeated double ecf = 28;</code>
      *
      * <pre>
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
+     * The ecf can be different for different channels (which can 
+     * happen when separate cameras are used for seperate channels),
+     * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
-    double getEcf();
+    int getEcfCount();
+    /**
+     * <code>repeated double ecf = 28;</code>
+     *
+     * <pre>
+     * The electron conversion factor (camera gain), defined as
+     * # of electrons per pixel / # of counts per pixel
+     * The ecf can be different for different channels (which can 
+     * happen when separate cameras are used for seperate channels),
+     * therefore provide the ecf for each channel in the channel order
+     * </pre>
+     */
+    double getEcf(int index);
+
+    // repeated double qe = 30;
+    /**
+     * <code>repeated double qe = 30;</code>
+     *
+     * <pre>
+     * The quantum efficiency can be used to calculate the number
+     * of photons that hit the sensor, rather than the number of 
+     * electrons that were derived from them
+     * Since this number is wavelength dependent, provide the QE
+     * for each channel (in the channel order)
+     * </pre>
+     */
+    java.util.List<java.lang.Double> getQeList();
+    /**
+     * <code>repeated double qe = 30;</code>
+     *
+     * <pre>
+     * The quantum efficiency can be used to calculate the number
+     * of photons that hit the sensor, rather than the number of 
+     * electrons that were derived from them
+     * Since this number is wavelength dependent, provide the QE
+     * for each channel (in the channel order)
+     * </pre>
+     */
+    int getQeCount();
+    /**
+     * <code>repeated double qe = 30;</code>
+     *
+     * <pre>
+     * The quantum efficiency can be used to calculate the number
+     * of photons that hit the sensor, rather than the number of 
+     * electrons that were derived from them
+     * Since this number is wavelength dependent, provide the QE
+     * for each channel (in the channel order)
+     * </pre>
+     */
+    double getQe(int index);
 
     // optional .TSF.ROI roi = 29;
     /**
@@ -2302,13 +2358,29 @@ public final class TaggedSpotsProtos {
               break;
             }
             case 225: {
-              bitField0_ |= 0x00040000;
-              ecf_ = input.readDouble();
+              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+                ecf_ = new java.util.ArrayList<java.lang.Double>();
+                mutable_bitField0_ |= 0x00080000;
+              }
+              ecf_.add(input.readDouble());
+              break;
+            }
+            case 226: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00080000) == 0x00080000) && input.getBytesUntilLimit() > 0) {
+                ecf_ = new java.util.ArrayList<java.lang.Double>();
+                mutable_bitField0_ |= 0x00080000;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                ecf_.add(input.readDouble());
+              }
+              input.popLimit(limit);
               break;
             }
             case 234: {
               edu.ucsf.tsf.TaggedSpotsProtos.ROI.Builder subBuilder = null;
-              if (((bitField0_ & 0x00080000) == 0x00080000)) {
+              if (((bitField0_ & 0x00040000) == 0x00040000)) {
                 subBuilder = roi_.toBuilder();
               }
               roi_ = input.readMessage(edu.ucsf.tsf.TaggedSpotsProtos.ROI.PARSER, extensionRegistry);
@@ -2316,7 +2388,28 @@ public final class TaggedSpotsProtos {
                 subBuilder.mergeFrom(roi_);
                 roi_ = subBuilder.buildPartial();
               }
-              bitField0_ |= 0x00080000;
+              bitField0_ |= 0x00040000;
+              break;
+            }
+            case 241: {
+              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
+                qe_ = new java.util.ArrayList<java.lang.Double>();
+                mutable_bitField0_ |= 0x00100000;
+              }
+              qe_.add(input.readDouble());
+              break;
+            }
+            case 242: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00100000) == 0x00100000) && input.getBytesUntilLimit() > 0) {
+                qe_ = new java.util.ArrayList<java.lang.Double>();
+                mutable_bitField0_ |= 0x00100000;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                qe_.add(input.readDouble());
+              }
+              input.popLimit(limit);
               break;
             }
           }
@@ -2329,6 +2422,12 @@ public final class TaggedSpotsProtos {
       } finally {
         if (((mutable_bitField0_ & 0x00002000) == 0x00002000)) {
           fluorophoreTypes_ = java.util.Collections.unmodifiableList(fluorophoreTypes_);
+        }
+        if (((mutable_bitField0_ & 0x00080000) == 0x00080000)) {
+          ecf_ = java.util.Collections.unmodifiableList(ecf_);
+        }
+        if (((mutable_bitField0_ & 0x00100000) == 0x00100000)) {
+          qe_ = java.util.Collections.unmodifiableList(qe_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -2909,30 +3008,98 @@ public final class TaggedSpotsProtos {
       return isTrack_;
     }
 
-    // optional double ecf = 28;
+    // repeated double ecf = 28;
     public static final int ECF_FIELD_NUMBER = 28;
-    private double ecf_;
+    private java.util.List<java.lang.Double> ecf_;
     /**
-     * <code>optional double ecf = 28;</code>
+     * <code>repeated double ecf = 28;</code>
      *
      * <pre>
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
+     * The ecf can be different for different channels (which can 
+     * happen when separate cameras are used for seperate channels),
+     * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
-    public boolean hasEcf() {
-      return ((bitField0_ & 0x00040000) == 0x00040000);
+    public java.util.List<java.lang.Double>
+        getEcfList() {
+      return ecf_;
     }
     /**
-     * <code>optional double ecf = 28;</code>
+     * <code>repeated double ecf = 28;</code>
      *
      * <pre>
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
+     * The ecf can be different for different channels (which can 
+     * happen when separate cameras are used for seperate channels),
+     * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
-    public double getEcf() {
-      return ecf_;
+    public int getEcfCount() {
+      return ecf_.size();
+    }
+    /**
+     * <code>repeated double ecf = 28;</code>
+     *
+     * <pre>
+     * The electron conversion factor (camera gain), defined as
+     * # of electrons per pixel / # of counts per pixel
+     * The ecf can be different for different channels (which can 
+     * happen when separate cameras are used for seperate channels),
+     * therefore provide the ecf for each channel in the channel order
+     * </pre>
+     */
+    public double getEcf(int index) {
+      return ecf_.get(index);
+    }
+
+    // repeated double qe = 30;
+    public static final int QE_FIELD_NUMBER = 30;
+    private java.util.List<java.lang.Double> qe_;
+    /**
+     * <code>repeated double qe = 30;</code>
+     *
+     * <pre>
+     * The quantum efficiency can be used to calculate the number
+     * of photons that hit the sensor, rather than the number of 
+     * electrons that were derived from them
+     * Since this number is wavelength dependent, provide the QE
+     * for each channel (in the channel order)
+     * </pre>
+     */
+    public java.util.List<java.lang.Double>
+        getQeList() {
+      return qe_;
+    }
+    /**
+     * <code>repeated double qe = 30;</code>
+     *
+     * <pre>
+     * The quantum efficiency can be used to calculate the number
+     * of photons that hit the sensor, rather than the number of 
+     * electrons that were derived from them
+     * Since this number is wavelength dependent, provide the QE
+     * for each channel (in the channel order)
+     * </pre>
+     */
+    public int getQeCount() {
+      return qe_.size();
+    }
+    /**
+     * <code>repeated double qe = 30;</code>
+     *
+     * <pre>
+     * The quantum efficiency can be used to calculate the number
+     * of photons that hit the sensor, rather than the number of 
+     * electrons that were derived from them
+     * Since this number is wavelength dependent, provide the QE
+     * for each channel (in the channel order)
+     * </pre>
+     */
+    public double getQe(int index) {
+      return qe_.get(index);
     }
 
     // optional .TSF.ROI roi = 29;
@@ -2942,7 +3109,7 @@ public final class TaggedSpotsProtos {
      * <code>optional .TSF.ROI roi = 29;</code>
      */
     public boolean hasRoi() {
-      return ((bitField0_ & 0x00080000) == 0x00080000);
+      return ((bitField0_ & 0x00040000) == 0x00040000);
     }
     /**
      * <code>optional .TSF.ROI roi = 29;</code>
@@ -2977,7 +3144,8 @@ public final class TaggedSpotsProtos {
       thetaUnits_ = edu.ucsf.tsf.TaggedSpotsProtos.ThetaUnits.DEGREES;
       fitMode_ = edu.ucsf.tsf.TaggedSpotsProtos.FitMode.ONEAXIS;
       isTrack_ = false;
-      ecf_ = 0D;
+      ecf_ = java.util.Collections.emptyList();
+      qe_ = java.util.Collections.emptyList();
       roi_ = edu.ucsf.tsf.TaggedSpotsProtos.ROI.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -3072,11 +3240,14 @@ public final class TaggedSpotsProtos {
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
         output.writeEnum(27, thetaUnits_.getNumber());
       }
-      if (((bitField0_ & 0x00040000) == 0x00040000)) {
-        output.writeDouble(28, ecf_);
+      for (int i = 0; i < ecf_.size(); i++) {
+        output.writeDouble(28, ecf_.get(i));
       }
-      if (((bitField0_ & 0x00080000) == 0x00080000)) {
+      if (((bitField0_ & 0x00040000) == 0x00040000)) {
         output.writeMessage(29, roi_);
+      }
+      for (int i = 0; i < qe_.size(); i++) {
+        output.writeDouble(30, qe_.get(i));
       }
       extensionWriter.writeUntil(2048, output);
       getUnknownFields().writeTo(output);
@@ -3164,13 +3335,21 @@ public final class TaggedSpotsProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(27, thetaUnits_.getNumber());
       }
+      {
+        int dataSize = 0;
+        dataSize = 8 * getEcfList().size();
+        size += dataSize;
+        size += 2 * getEcfList().size();
+      }
       if (((bitField0_ & 0x00040000) == 0x00040000)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(28, ecf_);
-      }
-      if (((bitField0_ & 0x00080000) == 0x00080000)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(29, roi_);
+      }
+      {
+        int dataSize = 0;
+        dataSize = 8 * getQeList().size();
+        size += dataSize;
+        size += 2 * getQeList().size();
       }
       size += extensionsSerializedSize();
       size += getUnknownFields().getSerializedSize();
@@ -3333,14 +3512,16 @@ public final class TaggedSpotsProtos {
         bitField0_ = (bitField0_ & ~0x00020000);
         isTrack_ = false;
         bitField0_ = (bitField0_ & ~0x00040000);
-        ecf_ = 0D;
+        ecf_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00080000);
+        qe_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00100000);
         if (roiBuilder_ == null) {
           roi_ = edu.ucsf.tsf.TaggedSpotsProtos.ROI.getDefaultInstance();
         } else {
           roiBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         return this;
       }
 
@@ -3450,12 +3631,18 @@ public final class TaggedSpotsProtos {
           to_bitField0_ |= 0x00020000;
         }
         result.isTrack_ = isTrack_;
-        if (((from_bitField0_ & 0x00080000) == 0x00080000)) {
-          to_bitField0_ |= 0x00040000;
+        if (((bitField0_ & 0x00080000) == 0x00080000)) {
+          ecf_ = java.util.Collections.unmodifiableList(ecf_);
+          bitField0_ = (bitField0_ & ~0x00080000);
         }
         result.ecf_ = ecf_;
-        if (((from_bitField0_ & 0x00100000) == 0x00100000)) {
-          to_bitField0_ |= 0x00080000;
+        if (((bitField0_ & 0x00100000) == 0x00100000)) {
+          qe_ = java.util.Collections.unmodifiableList(qe_);
+          bitField0_ = (bitField0_ & ~0x00100000);
+        }
+        result.qe_ = qe_;
+        if (((from_bitField0_ & 0x00200000) == 0x00200000)) {
+          to_bitField0_ |= 0x00040000;
         }
         if (roiBuilder_ == null) {
           result.roi_ = roi_;
@@ -3562,8 +3749,25 @@ public final class TaggedSpotsProtos {
         if (other.hasIsTrack()) {
           setIsTrack(other.getIsTrack());
         }
-        if (other.hasEcf()) {
-          setEcf(other.getEcf());
+        if (!other.ecf_.isEmpty()) {
+          if (ecf_.isEmpty()) {
+            ecf_ = other.ecf_;
+            bitField0_ = (bitField0_ & ~0x00080000);
+          } else {
+            ensureEcfIsMutable();
+            ecf_.addAll(other.ecf_);
+          }
+          onChanged();
+        }
+        if (!other.qe_.isEmpty()) {
+          if (qe_.isEmpty()) {
+            qe_ = other.qe_;
+            bitField0_ = (bitField0_ & ~0x00100000);
+          } else {
+            ensureQeIsMutable();
+            qe_.addAll(other.qe_);
+          }
+          onChanged();
         }
         if (other.hasRoi()) {
           mergeRoi(other.getRoi());
@@ -4922,55 +5126,246 @@ public final class TaggedSpotsProtos {
         return this;
       }
 
-      // optional double ecf = 28;
-      private double ecf_ ;
-      /**
-       * <code>optional double ecf = 28;</code>
-       *
-       * <pre>
-       * The electron conversion factor (camera gain), defined as
-       * # of electrons per pixel / # of counts per pixel
-       * </pre>
-       */
-      public boolean hasEcf() {
-        return ((bitField0_ & 0x00080000) == 0x00080000);
+      // repeated double ecf = 28;
+      private java.util.List<java.lang.Double> ecf_ = java.util.Collections.emptyList();
+      private void ensureEcfIsMutable() {
+        if (!((bitField0_ & 0x00080000) == 0x00080000)) {
+          ecf_ = new java.util.ArrayList<java.lang.Double>(ecf_);
+          bitField0_ |= 0x00080000;
+         }
       }
       /**
-       * <code>optional double ecf = 28;</code>
+       * <code>repeated double ecf = 28;</code>
        *
        * <pre>
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
+       * The ecf can be different for different channels (which can 
+       * happen when separate cameras are used for seperate channels),
+       * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
-      public double getEcf() {
-        return ecf_;
+      public java.util.List<java.lang.Double>
+          getEcfList() {
+        return java.util.Collections.unmodifiableList(ecf_);
       }
       /**
-       * <code>optional double ecf = 28;</code>
+       * <code>repeated double ecf = 28;</code>
        *
        * <pre>
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
+       * The ecf can be different for different channels (which can 
+       * happen when separate cameras are used for seperate channels),
+       * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
-      public Builder setEcf(double value) {
-        bitField0_ |= 0x00080000;
-        ecf_ = value;
+      public int getEcfCount() {
+        return ecf_.size();
+      }
+      /**
+       * <code>repeated double ecf = 28;</code>
+       *
+       * <pre>
+       * The electron conversion factor (camera gain), defined as
+       * # of electrons per pixel / # of counts per pixel
+       * The ecf can be different for different channels (which can 
+       * happen when separate cameras are used for seperate channels),
+       * therefore provide the ecf for each channel in the channel order
+       * </pre>
+       */
+      public double getEcf(int index) {
+        return ecf_.get(index);
+      }
+      /**
+       * <code>repeated double ecf = 28;</code>
+       *
+       * <pre>
+       * The electron conversion factor (camera gain), defined as
+       * # of electrons per pixel / # of counts per pixel
+       * The ecf can be different for different channels (which can 
+       * happen when separate cameras are used for seperate channels),
+       * therefore provide the ecf for each channel in the channel order
+       * </pre>
+       */
+      public Builder setEcf(
+          int index, double value) {
+        ensureEcfIsMutable();
+        ecf_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>optional double ecf = 28;</code>
+       * <code>repeated double ecf = 28;</code>
        *
        * <pre>
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
+       * The ecf can be different for different channels (which can 
+       * happen when separate cameras are used for seperate channels),
+       * therefore provide the ecf for each channel in the channel order
+       * </pre>
+       */
+      public Builder addEcf(double value) {
+        ensureEcfIsMutable();
+        ecf_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double ecf = 28;</code>
+       *
+       * <pre>
+       * The electron conversion factor (camera gain), defined as
+       * # of electrons per pixel / # of counts per pixel
+       * The ecf can be different for different channels (which can 
+       * happen when separate cameras are used for seperate channels),
+       * therefore provide the ecf for each channel in the channel order
+       * </pre>
+       */
+      public Builder addAllEcf(
+          java.lang.Iterable<? extends java.lang.Double> values) {
+        ensureEcfIsMutable();
+        super.addAll(values, ecf_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double ecf = 28;</code>
+       *
+       * <pre>
+       * The electron conversion factor (camera gain), defined as
+       * # of electrons per pixel / # of counts per pixel
+       * The ecf can be different for different channels (which can 
+       * happen when separate cameras are used for seperate channels),
+       * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
       public Builder clearEcf() {
+        ecf_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00080000);
-        ecf_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      // repeated double qe = 30;
+      private java.util.List<java.lang.Double> qe_ = java.util.Collections.emptyList();
+      private void ensureQeIsMutable() {
+        if (!((bitField0_ & 0x00100000) == 0x00100000)) {
+          qe_ = new java.util.ArrayList<java.lang.Double>(qe_);
+          bitField0_ |= 0x00100000;
+         }
+      }
+      /**
+       * <code>repeated double qe = 30;</code>
+       *
+       * <pre>
+       * The quantum efficiency can be used to calculate the number
+       * of photons that hit the sensor, rather than the number of 
+       * electrons that were derived from them
+       * Since this number is wavelength dependent, provide the QE
+       * for each channel (in the channel order)
+       * </pre>
+       */
+      public java.util.List<java.lang.Double>
+          getQeList() {
+        return java.util.Collections.unmodifiableList(qe_);
+      }
+      /**
+       * <code>repeated double qe = 30;</code>
+       *
+       * <pre>
+       * The quantum efficiency can be used to calculate the number
+       * of photons that hit the sensor, rather than the number of 
+       * electrons that were derived from them
+       * Since this number is wavelength dependent, provide the QE
+       * for each channel (in the channel order)
+       * </pre>
+       */
+      public int getQeCount() {
+        return qe_.size();
+      }
+      /**
+       * <code>repeated double qe = 30;</code>
+       *
+       * <pre>
+       * The quantum efficiency can be used to calculate the number
+       * of photons that hit the sensor, rather than the number of 
+       * electrons that were derived from them
+       * Since this number is wavelength dependent, provide the QE
+       * for each channel (in the channel order)
+       * </pre>
+       */
+      public double getQe(int index) {
+        return qe_.get(index);
+      }
+      /**
+       * <code>repeated double qe = 30;</code>
+       *
+       * <pre>
+       * The quantum efficiency can be used to calculate the number
+       * of photons that hit the sensor, rather than the number of 
+       * electrons that were derived from them
+       * Since this number is wavelength dependent, provide the QE
+       * for each channel (in the channel order)
+       * </pre>
+       */
+      public Builder setQe(
+          int index, double value) {
+        ensureQeIsMutable();
+        qe_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double qe = 30;</code>
+       *
+       * <pre>
+       * The quantum efficiency can be used to calculate the number
+       * of photons that hit the sensor, rather than the number of 
+       * electrons that were derived from them
+       * Since this number is wavelength dependent, provide the QE
+       * for each channel (in the channel order)
+       * </pre>
+       */
+      public Builder addQe(double value) {
+        ensureQeIsMutable();
+        qe_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double qe = 30;</code>
+       *
+       * <pre>
+       * The quantum efficiency can be used to calculate the number
+       * of photons that hit the sensor, rather than the number of 
+       * electrons that were derived from them
+       * Since this number is wavelength dependent, provide the QE
+       * for each channel (in the channel order)
+       * </pre>
+       */
+      public Builder addAllQe(
+          java.lang.Iterable<? extends java.lang.Double> values) {
+        ensureQeIsMutable();
+        super.addAll(values, qe_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated double qe = 30;</code>
+       *
+       * <pre>
+       * The quantum efficiency can be used to calculate the number
+       * of photons that hit the sensor, rather than the number of 
+       * electrons that were derived from them
+       * Since this number is wavelength dependent, provide the QE
+       * for each channel (in the channel order)
+       * </pre>
+       */
+      public Builder clearQe() {
+        qe_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00100000);
         onChanged();
         return this;
       }
@@ -4983,7 +5378,7 @@ public final class TaggedSpotsProtos {
        * <code>optional .TSF.ROI roi = 29;</code>
        */
       public boolean hasRoi() {
-        return ((bitField0_ & 0x00100000) == 0x00100000);
+        return ((bitField0_ & 0x00200000) == 0x00200000);
       }
       /**
        * <code>optional .TSF.ROI roi = 29;</code>
@@ -5008,7 +5403,7 @@ public final class TaggedSpotsProtos {
         } else {
           roiBuilder_.setMessage(value);
         }
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -5022,7 +5417,7 @@ public final class TaggedSpotsProtos {
         } else {
           roiBuilder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -5030,7 +5425,7 @@ public final class TaggedSpotsProtos {
        */
       public Builder mergeRoi(edu.ucsf.tsf.TaggedSpotsProtos.ROI value) {
         if (roiBuilder_ == null) {
-          if (((bitField0_ & 0x00100000) == 0x00100000) &&
+          if (((bitField0_ & 0x00200000) == 0x00200000) &&
               roi_ != edu.ucsf.tsf.TaggedSpotsProtos.ROI.getDefaultInstance()) {
             roi_ =
               edu.ucsf.tsf.TaggedSpotsProtos.ROI.newBuilder(roi_).mergeFrom(value).buildPartial();
@@ -5041,7 +5436,7 @@ public final class TaggedSpotsProtos {
         } else {
           roiBuilder_.mergeFrom(value);
         }
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00200000;
         return this;
       }
       /**
@@ -5054,14 +5449,14 @@ public final class TaggedSpotsProtos {
         } else {
           roiBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00100000);
+        bitField0_ = (bitField0_ & ~0x00200000);
         return this;
       }
       /**
        * <code>optional .TSF.ROI roi = 29;</code>
        */
       public edu.ucsf.tsf.TaggedSpotsProtos.ROI.Builder getRoiBuilder() {
-        bitField0_ |= 0x00100000;
+        bitField0_ |= 0x00200000;
         onChanged();
         return getRoiFieldBuilder().getBuilder();
       }
@@ -5356,7 +5751,7 @@ public final class TaggedSpotsProtos {
      * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
      *
      * <pre>
-     * Use intenisty_units only if different from SpotList
+     * Use intensity_units only if different from SpotList
      * integrated spot density. This can either be determined from a fit or 
      * using any other methods.  This number should be corrected for background
      * </pre>
@@ -5366,7 +5761,7 @@ public final class TaggedSpotsProtos {
      * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
      *
      * <pre>
-     * Use intenisty_units only if different from SpotList
+     * Use intensity_units only if different from SpotList
      * integrated spot density. This can either be determined from a fit or 
      * using any other methods.  This number should be corrected for background
      * </pre>
@@ -5399,7 +5794,7 @@ public final class TaggedSpotsProtos {
      * Background around the spot. 
      * This can be determined through a fit or other methods
      * This number should not include the camera bias, i.e. it should be linearly
-     * propertional to the number of photons in the background
+     * proportional to the number of photons in the background
      * </pre>
      */
     boolean hasBackground();
@@ -5410,7 +5805,7 @@ public final class TaggedSpotsProtos {
      * Background around the spot. 
      * This can be determined through a fit or other methods
      * This number should not include the camera bias, i.e. it should be linearly
-     * propertional to the number of photons in the background
+     * proportional to the number of photons in the background
      * </pre>
      */
     float getBackground();
@@ -5462,7 +5857,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float theta = 14;</code>
      *
      * <pre>
-     * Rotation of assymetric peak, only used 
+     * Rotation of asymetric peak, only used 
      * when fitmode == TWOAXISANDTHETA
      * </pre>
      */
@@ -5471,7 +5866,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float theta = 14;</code>
      *
      * <pre>
-     * Rotation of assymetric peak, only used 
+     * Rotation of asymetric peak, only used 
      * when fitmode == TWOAXISANDTHETA
      * </pre>
      */
@@ -6128,7 +6523,7 @@ public final class TaggedSpotsProtos {
      * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
      *
      * <pre>
-     * Use intenisty_units only if different from SpotList
+     * Use intensity_units only if different from SpotList
      * integrated spot density. This can either be determined from a fit or 
      * using any other methods.  This number should be corrected for background
      * </pre>
@@ -6140,7 +6535,7 @@ public final class TaggedSpotsProtos {
      * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
      *
      * <pre>
-     * Use intenisty_units only if different from SpotList
+     * Use intensity_units only if different from SpotList
      * integrated spot density. This can either be determined from a fit or 
      * using any other methods.  This number should be corrected for background
      * </pre>
@@ -6183,7 +6578,7 @@ public final class TaggedSpotsProtos {
      * Background around the spot. 
      * This can be determined through a fit or other methods
      * This number should not include the camera bias, i.e. it should be linearly
-     * propertional to the number of photons in the background
+     * proportional to the number of photons in the background
      * </pre>
      */
     public boolean hasBackground() {
@@ -6196,7 +6591,7 @@ public final class TaggedSpotsProtos {
      * Background around the spot. 
      * This can be determined through a fit or other methods
      * This number should not include the camera bias, i.e. it should be linearly
-     * propertional to the number of photons in the background
+     * proportional to the number of photons in the background
      * </pre>
      */
     public float getBackground() {
@@ -6264,7 +6659,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float theta = 14;</code>
      *
      * <pre>
-     * Rotation of assymetric peak, only used 
+     * Rotation of asymetric peak, only used 
      * when fitmode == TWOAXISANDTHETA
      * </pre>
      */
@@ -6275,7 +6670,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float theta = 14;</code>
      *
      * <pre>
-     * Rotation of assymetric peak, only used 
+     * Rotation of asymetric peak, only used 
      * when fitmode == TWOAXISANDTHETA
      * </pre>
      */
@@ -7774,7 +8169,7 @@ public final class TaggedSpotsProtos {
        * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
        *
        * <pre>
-       * Use intenisty_units only if different from SpotList
+       * Use intensity_units only if different from SpotList
        * integrated spot density. This can either be determined from a fit or 
        * using any other methods.  This number should be corrected for background
        * </pre>
@@ -7786,7 +8181,7 @@ public final class TaggedSpotsProtos {
        * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
        *
        * <pre>
-       * Use intenisty_units only if different from SpotList
+       * Use intensity_units only if different from SpotList
        * integrated spot density. This can either be determined from a fit or 
        * using any other methods.  This number should be corrected for background
        * </pre>
@@ -7798,7 +8193,7 @@ public final class TaggedSpotsProtos {
        * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
        *
        * <pre>
-       * Use intenisty_units only if different from SpotList
+       * Use intensity_units only if different from SpotList
        * integrated spot density. This can either be determined from a fit or 
        * using any other methods.  This number should be corrected for background
        * </pre>
@@ -7816,7 +8211,7 @@ public final class TaggedSpotsProtos {
        * <code>optional .TSF.IntensityUnits intensity_units = 18;</code>
        *
        * <pre>
-       * Use intenisty_units only if different from SpotList
+       * Use intensity_units only if different from SpotList
        * integrated spot density. This can either be determined from a fit or 
        * using any other methods.  This number should be corrected for background
        * </pre>
@@ -7886,7 +8281,7 @@ public final class TaggedSpotsProtos {
        * Background around the spot. 
        * This can be determined through a fit or other methods
        * This number should not include the camera bias, i.e. it should be linearly
-       * propertional to the number of photons in the background
+       * proportional to the number of photons in the background
        * </pre>
        */
       public boolean hasBackground() {
@@ -7899,7 +8294,7 @@ public final class TaggedSpotsProtos {
        * Background around the spot. 
        * This can be determined through a fit or other methods
        * This number should not include the camera bias, i.e. it should be linearly
-       * propertional to the number of photons in the background
+       * proportional to the number of photons in the background
        * </pre>
        */
       public float getBackground() {
@@ -7912,7 +8307,7 @@ public final class TaggedSpotsProtos {
        * Background around the spot. 
        * This can be determined through a fit or other methods
        * This number should not include the camera bias, i.e. it should be linearly
-       * propertional to the number of photons in the background
+       * proportional to the number of photons in the background
        * </pre>
        */
       public Builder setBackground(float value) {
@@ -7928,7 +8323,7 @@ public final class TaggedSpotsProtos {
        * Background around the spot. 
        * This can be determined through a fit or other methods
        * This number should not include the camera bias, i.e. it should be linearly
-       * propertional to the number of photons in the background
+       * proportional to the number of photons in the background
        * </pre>
        */
       public Builder clearBackground() {
@@ -8054,7 +8449,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float theta = 14;</code>
        *
        * <pre>
-       * Rotation of assymetric peak, only used 
+       * Rotation of asymetric peak, only used 
        * when fitmode == TWOAXISANDTHETA
        * </pre>
        */
@@ -8065,7 +8460,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float theta = 14;</code>
        *
        * <pre>
-       * Rotation of assymetric peak, only used 
+       * Rotation of asymetric peak, only used 
        * when fitmode == TWOAXISANDTHETA
        * </pre>
        */
@@ -8076,7 +8471,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float theta = 14;</code>
        *
        * <pre>
-       * Rotation of assymetric peak, only used 
+       * Rotation of asymetric peak, only used 
        * when fitmode == TWOAXISANDTHETA
        * </pre>
        */
@@ -8090,7 +8485,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float theta = 14;</code>
        *
        * <pre>
-       * Rotation of assymetric peak, only used 
+       * Rotation of asymetric peak, only used 
        * when fitmode == TWOAXISANDTHETA
        * </pre>
        */
@@ -8460,7 +8855,7 @@ public final class TaggedSpotsProtos {
       "\n\016TSFProto.proto\022\003TSF\"G\n\017FluorophoreType" +
       "\022\n\n\002id\030\001 \002(\005\022\023\n\013description\030\002 \001(\t\022\023\n\013is_" +
       "fiducial\030\003 \001(\010\"=\n\003ROI\022\t\n\001x\030\001 \002(\005\022\t\n\001y\030\002 " +
-      "\002(\005\022\017\n\007x_width\030\003 \002(\005\022\017\n\007y_width\030\004 \002(\005\"\225\004" +
+      "\002(\005\022\017\n\007x_width\030\003 \002(\005\022\017\n\007y_width\030\004 \002(\005\"\241\004" +
       "\n\010SpotList\022\031\n\016application_id\030\001 \002(\005:\0011\022\014\n" +
       "\004name\030\002 \001(\t\022\020\n\010filepath\030\003 \001(\t\022\013\n\003uid\030\004 \001" +
       "(\003\022\023\n\013nr_pixels_x\030\005 \001(\005\022\023\n\013nr_pixels_y\030\006" +
@@ -8473,26 +8868,26 @@ public final class TaggedSpotsProtos {
       "y_units\030\027 \001(\0162\023.TSF.IntensityUnits\022$\n\013th" +
       "eta_units\030\033 \001(\0162\017.TSF.ThetaUnits\022\036\n\010fit_" +
       "mode\030\030 \001(\0162\014.TSF.FitMode\022\027\n\010is_track\030\031 \001" +
-      "(\010:\005false\022\013\n\003ecf\030\034 \001(\001\022\025\n\003roi\030\035 \001(\0132\010.TS" +
-      "F.ROI*\006\010\334\013\020\200\020\"\365\003\n\004Spot\022\020\n\010molecule\030\001 \002(\005" +
-      "\022\017\n\007channel\030\002 \002(\005\022\r\n\005frame\030\003 \002(\005\022\r\n\005slic" +
-      "e\030\004 \001(\005\022\013\n\003pos\030\005 \001(\005\022\030\n\020fluorophore_type",
-      "\030\023 \001(\005\022\017\n\007cluster\030\024 \001(\005\022*\n\016location_unit" +
-      "s\030\021 \001(\0162\022.TSF.LocationUnits\022\t\n\001x\030\007 \002(\002\022\t" +
-      "\n\001y\030\010 \002(\002\022\t\n\001z\030\t \001(\002\022,\n\017intensity_units\030" +
-      "\022 \001(\0162\023.TSF.IntensityUnits\022\021\n\tintensity\030" +
-      "\n \002(\002\022\022\n\nbackground\030\013 \001(\002\022\r\n\005width\030\014 \001(\002" +
-      "\022\t\n\001a\030\r \001(\002\022\r\n\005theta\030\016 \001(\002\022\022\n\nx_original" +
-      "\030e \001(\002\022\022\n\ny_original\030f \001(\002\022\022\n\nz_original" +
-      "\030g \001(\002\022\023\n\013x_precision\030h \001(\002\022\023\n\013y_precisi" +
-      "on\030i \001(\002\022\023\n\013z_precision\030j \001(\002\022\022\n\nx_posit" +
-      "ion\030k \001(\005\022\022\n\ny_position\030l \001(\005*\006\010\334\013\020\200\020*8\n",
-      "\007FitMode\022\013\n\007ONEAXIS\020\000\022\013\n\007TWOAXIS\020\001\022\023\n\017TW" +
-      "OAXISANDTHETA\020\002*&\n\nThetaUnits\022\013\n\007DEGREES" +
-      "\020\000\022\013\n\007RADIANS\020\001*)\n\016IntensityUnits\022\n\n\006COU" +
-      "NTS\020\000\022\013\n\007PHOTONS\020\001*+\n\rLocationUnits\022\006\n\002N" +
-      "M\020\000\022\006\n\002UM\020\001\022\n\n\006PIXELS\020\002B!\n\014edu.ucsf.tsfB" +
-      "\021TaggedSpotsProtos"
+      "(\010:\005false\022\013\n\003ecf\030\034 \003(\001\022\n\n\002qe\030\036 \003(\001\022\025\n\003ro" +
+      "i\030\035 \001(\0132\010.TSF.ROI*\006\010\334\013\020\200\020\"\365\003\n\004Spot\022\020\n\010mo" +
+      "lecule\030\001 \002(\005\022\017\n\007channel\030\002 \002(\005\022\r\n\005frame\030\003" +
+      " \002(\005\022\r\n\005slice\030\004 \001(\005\022\013\n\003pos\030\005 \001(\005\022\030\n\020fluo",
+      "rophore_type\030\023 \001(\005\022\017\n\007cluster\030\024 \001(\005\022*\n\016l" +
+      "ocation_units\030\021 \001(\0162\022.TSF.LocationUnits\022" +
+      "\t\n\001x\030\007 \002(\002\022\t\n\001y\030\010 \002(\002\022\t\n\001z\030\t \001(\002\022,\n\017inte" +
+      "nsity_units\030\022 \001(\0162\023.TSF.IntensityUnits\022\021" +
+      "\n\tintensity\030\n \002(\002\022\022\n\nbackground\030\013 \001(\002\022\r\n" +
+      "\005width\030\014 \001(\002\022\t\n\001a\030\r \001(\002\022\r\n\005theta\030\016 \001(\002\022\022" +
+      "\n\nx_original\030e \001(\002\022\022\n\ny_original\030f \001(\002\022\022" +
+      "\n\nz_original\030g \001(\002\022\023\n\013x_precision\030h \001(\002\022" +
+      "\023\n\013y_precision\030i \001(\002\022\023\n\013z_precision\030j \001(" +
+      "\002\022\022\n\nx_position\030k \001(\005\022\022\n\ny_position\030l \001(",
+      "\005*\006\010\334\013\020\200\020*8\n\007FitMode\022\013\n\007ONEAXIS\020\000\022\013\n\007TWO" +
+      "AXIS\020\001\022\023\n\017TWOAXISANDTHETA\020\002*&\n\nThetaUnit" +
+      "s\022\013\n\007DEGREES\020\000\022\013\n\007RADIANS\020\001*)\n\016Intensity" +
+      "Units\022\n\n\006COUNTS\020\000\022\013\n\007PHOTONS\020\001*+\n\rLocati" +
+      "onUnits\022\006\n\002NM\020\000\022\006\n\002UM\020\001\022\n\n\006PIXELS\020\002B!\n\014e" +
+      "du.ucsf.tsfB\021TaggedSpotsProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -8516,7 +8911,7 @@ public final class TaggedSpotsProtos {
           internal_static_TSF_SpotList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_TSF_SpotList_descriptor,
-              new java.lang.String[] { "ApplicationId", "Name", "Filepath", "Uid", "NrPixelsX", "NrPixelsY", "PixelSize", "NrSpots", "BoxSize", "NrChannels", "NrFrames", "NrSlices", "NrPos", "FluorophoreTypes", "LocationUnits", "IntensityUnits", "ThetaUnits", "FitMode", "IsTrack", "Ecf", "Roi", });
+              new java.lang.String[] { "ApplicationId", "Name", "Filepath", "Uid", "NrPixelsX", "NrPixelsY", "PixelSize", "NrSpots", "BoxSize", "NrChannels", "NrFrames", "NrSlices", "NrPos", "FluorophoreTypes", "LocationUnits", "IntensityUnits", "ThetaUnits", "FitMode", "IsTrack", "Ecf", "Qe", "Roi", });
           internal_static_TSF_Spot_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_TSF_Spot_fieldAccessorTable = new

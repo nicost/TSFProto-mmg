@@ -540,12 +540,29 @@ class SpotList : public ::google::protobuf::Message {
   inline bool is_track() const;
   inline void set_is_track(bool value);
 
-  // optional double ecf = 28;
-  inline bool has_ecf() const;
+  // repeated double ecf = 28;
+  inline int ecf_size() const;
   inline void clear_ecf();
   static const int kEcfFieldNumber = 28;
-  inline double ecf() const;
-  inline void set_ecf(double value);
+  inline double ecf(int index) const;
+  inline void set_ecf(int index, double value);
+  inline void add_ecf(double value);
+  inline const ::google::protobuf::RepeatedField< double >&
+      ecf() const;
+  inline ::google::protobuf::RepeatedField< double >*
+      mutable_ecf();
+
+  // repeated double qe = 30;
+  inline int qe_size() const;
+  inline void clear_qe();
+  static const int kQeFieldNumber = 30;
+  inline double qe(int index) const;
+  inline void set_qe(int index, double value);
+  inline void add_qe(double value);
+  inline const ::google::protobuf::RepeatedField< double >&
+      qe() const;
+  inline ::google::protobuf::RepeatedField< double >*
+      mutable_qe();
 
   // optional .TSF.ROI roi = 29;
   inline bool has_roi() const;
@@ -595,8 +612,6 @@ class SpotList : public ::google::protobuf::Message {
   inline void clear_has_fit_mode();
   inline void set_has_is_track();
   inline void clear_has_is_track();
-  inline void set_has_ecf();
-  inline void clear_has_ecf();
   inline void set_has_roi();
   inline void clear_has_roi();
 
@@ -616,18 +631,19 @@ class SpotList : public ::google::protobuf::Message {
   ::google::protobuf::int32 nr_channels_;
   ::google::protobuf::int32 nr_frames_;
   ::google::protobuf::int32 nr_slices_;
-  ::google::protobuf::RepeatedPtrField< ::TSF::FluorophoreType > fluorophore_types_;
   ::google::protobuf::int32 nr_pos_;
   int location_units_;
+  ::google::protobuf::RepeatedPtrField< ::TSF::FluorophoreType > fluorophore_types_;
   int intensity_units_;
   int theta_units_;
   int fit_mode_;
   bool is_track_;
-  double ecf_;
+  ::google::protobuf::RepeatedField< double > ecf_;
+  ::google::protobuf::RepeatedField< double > qe_;
   ::TSF::ROI* roi_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(21 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(22 + 31) / 32];
 
   friend void  protobuf_AddDesc_TSFProto_2eproto();
   friend void protobuf_AssignDesc_TSFProto_2eproto();
@@ -1699,37 +1715,65 @@ inline void SpotList::set_is_track(bool value) {
   is_track_ = value;
 }
 
-// optional double ecf = 28;
-inline bool SpotList::has_ecf() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
-}
-inline void SpotList::set_has_ecf() {
-  _has_bits_[0] |= 0x00080000u;
-}
-inline void SpotList::clear_has_ecf() {
-  _has_bits_[0] &= ~0x00080000u;
+// repeated double ecf = 28;
+inline int SpotList::ecf_size() const {
+  return ecf_.size();
 }
 inline void SpotList::clear_ecf() {
-  ecf_ = 0;
-  clear_has_ecf();
+  ecf_.Clear();
 }
-inline double SpotList::ecf() const {
+inline double SpotList::ecf(int index) const {
+  return ecf_.Get(index);
+}
+inline void SpotList::set_ecf(int index, double value) {
+  ecf_.Set(index, value);
+}
+inline void SpotList::add_ecf(double value) {
+  ecf_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< double >&
+SpotList::ecf() const {
   return ecf_;
 }
-inline void SpotList::set_ecf(double value) {
-  set_has_ecf();
-  ecf_ = value;
+inline ::google::protobuf::RepeatedField< double >*
+SpotList::mutable_ecf() {
+  return &ecf_;
+}
+
+// repeated double qe = 30;
+inline int SpotList::qe_size() const {
+  return qe_.size();
+}
+inline void SpotList::clear_qe() {
+  qe_.Clear();
+}
+inline double SpotList::qe(int index) const {
+  return qe_.Get(index);
+}
+inline void SpotList::set_qe(int index, double value) {
+  qe_.Set(index, value);
+}
+inline void SpotList::add_qe(double value) {
+  qe_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< double >&
+SpotList::qe() const {
+  return qe_;
+}
+inline ::google::protobuf::RepeatedField< double >*
+SpotList::mutable_qe() {
+  return &qe_;
 }
 
 // optional .TSF.ROI roi = 29;
 inline bool SpotList::has_roi() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 inline void SpotList::set_has_roi() {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00200000u;
 }
 inline void SpotList::clear_has_roi() {
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline void SpotList::clear_roi() {
   if (roi_ != NULL) roi_->::TSF::ROI::Clear();
