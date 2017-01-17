@@ -164,7 +164,7 @@ message Spot {
 
    // Intensity values
 
-   // Use intenisty_units only if different from SpotList
+   // Use intensity_units only if different from SpotList
    // integrated spot density. This can either be determined from a fit or 
    // using any other methods.  This number should be corrected for background
    optional IntensityUnits intensity_units = 18; 
@@ -172,7 +172,7 @@ message Spot {
    // Background around the spot. 
    // This can be determined through a fit or other methods
    // This number should not include the camera bias, i.e. it should be linearly
-   // propertional to the number of photons in the background
+   // proportional to the number of photons in the background
    optional float background = 11;   
 
    // Peak shape parameters
@@ -185,7 +185,7 @@ message Spot {
    // divided by width of the short axis
    optional float a = 13; 
    
-   // Rotation of assymetric peak, only used 
+   // Rotation of asymetric peak, only used 
    // when fitmode == TWOAXISANDTHETA
    optional float theta = 14; 
 
