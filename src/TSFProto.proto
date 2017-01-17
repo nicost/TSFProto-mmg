@@ -10,6 +10,7 @@
 //                   California
 // Jan. 2017, added fields suggested by Alex Herbert
 // License: BSD 2-Clause License
+
 package TSF;
 
 option java_package = "edu.ucsf.tsf";
@@ -89,12 +90,22 @@ message SpotList {
 
    // The electron conversion factor (camera gain), defined as
    // # of electrons per pixel / # of counts per pixel
-   optional double ecf = 28; 
+   // The ecf can be different for different channels (which can 
+   // happen when separate cameras are used for seperate channels),
+   // therefore provide the ecf for each channel in the channel order
+   repeated double ecf = 28; 
+
+   // The quantum efficiency can be used to calculate the number
+   // of photons that hit the sensor, rather than the number of 
+   // electrons that were derived from them
+   // Since this number is wavelength dependent, provide the QE
+   // for each channel (in the channel order)
+   repeated double qe = 30;
 
    optional ROI roi = 29;
 
 
-   // These ids can be used in your own .proto derived from this one
+   // The followinf ids can be used in your own .proto derived from this one
    extensions 1500 to 2047;
       
 }
