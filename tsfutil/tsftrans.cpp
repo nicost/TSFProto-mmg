@@ -59,13 +59,13 @@ int main (int argc, const char*  argv[])
 
    if (! (inputText || inputBinary) )
    {
-      printf("Input file should have either the .txt or .txf extension\n");
+      printf("Input file should have either the .txt or .tsf extension\n");
       return 1;
    }
 
    if (! (outputText || outputBinary) )
    {
-      printf("Output file should have either the .txt or .txf extension\n");
+      printf("Output file should have either the .txt or .tsf extension\n");
       return 1;
    }
 
