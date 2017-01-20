@@ -91,7 +91,7 @@ message SpotList {
    // The electron conversion factor (camera gain), defined as
    // # of electrons per pixel / # of counts per pixel
    // The ecf can be different for different channels (which can 
-   // happen when separate cameras are used for seperate channels),
+   // happen when separate cameras are used for separate channels),
    // therefore provide the ecf for each channel in the channel order
    repeated double ecf = 28; 
 
@@ -99,7 +99,8 @@ message SpotList {
    // of photons that hit the sensor, rather than the number of 
    // electrons that were derived from them
    // Since this number is wavelength dependent, provide the QE
-   // for each channel (in the channel order)
+   // for each fluorophore type (in the fluorophore type order)
+   // See the description of the field channel in the Spot message below
    repeated double qe = 30;
 
    optional ROI roi = 29;
@@ -189,19 +190,17 @@ message Spot {
    // Peak shape parameters
 
    // Peak width at half height in location units
-   // for asymetric peaks, calculate the width as the square root of the 
+   // for asymmetric peaks, calculate the width as the square root of the 
    // product of the widths of the long and short axes
    optional float width = 12; 
    // Shape of the peak: width of the long axis 
    // divided by width of the short axis
    optional float a = 13; 
-   
    // Rotation of asymetric peak, only used 
    // when fitmode == TWOAXISANDTHETA
    optional float theta = 14; 
 
-   // Original xyz coordinates from fitting before drift 
-   // or other correction correction
+   // Original xyz coordinates from fitting before correction
    optional float x_original = 101;
    optional float y_original = 102;
    optional float z_original = 103;
