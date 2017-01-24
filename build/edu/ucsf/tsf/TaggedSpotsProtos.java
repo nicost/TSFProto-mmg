@@ -2102,7 +2102,7 @@ public final class TaggedSpotsProtos {
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
      * The ecf can be different for different channels (which can 
-     * happen when separate cameras are used for seperate channels),
+     * happen when separate cameras are used for separate channels),
      * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
@@ -2114,7 +2114,7 @@ public final class TaggedSpotsProtos {
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
      * The ecf can be different for different channels (which can 
-     * happen when separate cameras are used for seperate channels),
+     * happen when separate cameras are used for separate channels),
      * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
@@ -2126,7 +2126,7 @@ public final class TaggedSpotsProtos {
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
      * The ecf can be different for different channels (which can 
-     * happen when separate cameras are used for seperate channels),
+     * happen when separate cameras are used for separate channels),
      * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
@@ -2141,7 +2141,8 @@ public final class TaggedSpotsProtos {
      * of photons that hit the sensor, rather than the number of 
      * electrons that were derived from them
      * Since this number is wavelength dependent, provide the QE
-     * for each channel (in the channel order)
+     * for each fluorophore type (in the fluorophore type order)
+     * See the description of the field channel in the Spot message below
      * </pre>
      */
     java.util.List<java.lang.Double> getQeList();
@@ -2153,7 +2154,8 @@ public final class TaggedSpotsProtos {
      * of photons that hit the sensor, rather than the number of 
      * electrons that were derived from them
      * Since this number is wavelength dependent, provide the QE
-     * for each channel (in the channel order)
+     * for each fluorophore type (in the fluorophore type order)
+     * See the description of the field channel in the Spot message below
      * </pre>
      */
     int getQeCount();
@@ -2165,7 +2167,8 @@ public final class TaggedSpotsProtos {
      * of photons that hit the sensor, rather than the number of 
      * electrons that were derived from them
      * Since this number is wavelength dependent, provide the QE
-     * for each channel (in the channel order)
+     * for each fluorophore type (in the fluorophore type order)
+     * See the description of the field channel in the Spot message below
      * </pre>
      */
     double getQe(int index);
@@ -3018,7 +3021,7 @@ public final class TaggedSpotsProtos {
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
      * The ecf can be different for different channels (which can 
-     * happen when separate cameras are used for seperate channels),
+     * happen when separate cameras are used for separate channels),
      * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
@@ -3033,7 +3036,7 @@ public final class TaggedSpotsProtos {
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
      * The ecf can be different for different channels (which can 
-     * happen when separate cameras are used for seperate channels),
+     * happen when separate cameras are used for separate channels),
      * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
@@ -3047,7 +3050,7 @@ public final class TaggedSpotsProtos {
      * The electron conversion factor (camera gain), defined as
      * # of electrons per pixel / # of counts per pixel
      * The ecf can be different for different channels (which can 
-     * happen when separate cameras are used for seperate channels),
+     * happen when separate cameras are used for separate channels),
      * therefore provide the ecf for each channel in the channel order
      * </pre>
      */
@@ -3066,7 +3069,8 @@ public final class TaggedSpotsProtos {
      * of photons that hit the sensor, rather than the number of 
      * electrons that were derived from them
      * Since this number is wavelength dependent, provide the QE
-     * for each channel (in the channel order)
+     * for each fluorophore type (in the fluorophore type order)
+     * See the description of the field channel in the Spot message below
      * </pre>
      */
     public java.util.List<java.lang.Double>
@@ -3081,7 +3085,8 @@ public final class TaggedSpotsProtos {
      * of photons that hit the sensor, rather than the number of 
      * electrons that were derived from them
      * Since this number is wavelength dependent, provide the QE
-     * for each channel (in the channel order)
+     * for each fluorophore type (in the fluorophore type order)
+     * See the description of the field channel in the Spot message below
      * </pre>
      */
     public int getQeCount() {
@@ -3095,7 +3100,8 @@ public final class TaggedSpotsProtos {
      * of photons that hit the sensor, rather than the number of 
      * electrons that were derived from them
      * Since this number is wavelength dependent, provide the QE
-     * for each channel (in the channel order)
+     * for each fluorophore type (in the fluorophore type order)
+     * See the description of the field channel in the Spot message below
      * </pre>
      */
     public double getQe(int index) {
@@ -5141,7 +5147,7 @@ public final class TaggedSpotsProtos {
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
        * The ecf can be different for different channels (which can 
-       * happen when separate cameras are used for seperate channels),
+       * happen when separate cameras are used for separate channels),
        * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
@@ -5156,7 +5162,7 @@ public final class TaggedSpotsProtos {
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
        * The ecf can be different for different channels (which can 
-       * happen when separate cameras are used for seperate channels),
+       * happen when separate cameras are used for separate channels),
        * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
@@ -5170,7 +5176,7 @@ public final class TaggedSpotsProtos {
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
        * The ecf can be different for different channels (which can 
-       * happen when separate cameras are used for seperate channels),
+       * happen when separate cameras are used for separate channels),
        * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
@@ -5184,7 +5190,7 @@ public final class TaggedSpotsProtos {
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
        * The ecf can be different for different channels (which can 
-       * happen when separate cameras are used for seperate channels),
+       * happen when separate cameras are used for separate channels),
        * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
@@ -5202,7 +5208,7 @@ public final class TaggedSpotsProtos {
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
        * The ecf can be different for different channels (which can 
-       * happen when separate cameras are used for seperate channels),
+       * happen when separate cameras are used for separate channels),
        * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
@@ -5219,7 +5225,7 @@ public final class TaggedSpotsProtos {
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
        * The ecf can be different for different channels (which can 
-       * happen when separate cameras are used for seperate channels),
+       * happen when separate cameras are used for separate channels),
        * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
@@ -5237,7 +5243,7 @@ public final class TaggedSpotsProtos {
        * The electron conversion factor (camera gain), defined as
        * # of electrons per pixel / # of counts per pixel
        * The ecf can be different for different channels (which can 
-       * happen when separate cameras are used for seperate channels),
+       * happen when separate cameras are used for separate channels),
        * therefore provide the ecf for each channel in the channel order
        * </pre>
        */
@@ -5264,7 +5270,8 @@ public final class TaggedSpotsProtos {
        * of photons that hit the sensor, rather than the number of 
        * electrons that were derived from them
        * Since this number is wavelength dependent, provide the QE
-       * for each channel (in the channel order)
+       * for each fluorophore type (in the fluorophore type order)
+       * See the description of the field channel in the Spot message below
        * </pre>
        */
       public java.util.List<java.lang.Double>
@@ -5279,7 +5286,8 @@ public final class TaggedSpotsProtos {
        * of photons that hit the sensor, rather than the number of 
        * electrons that were derived from them
        * Since this number is wavelength dependent, provide the QE
-       * for each channel (in the channel order)
+       * for each fluorophore type (in the fluorophore type order)
+       * See the description of the field channel in the Spot message below
        * </pre>
        */
       public int getQeCount() {
@@ -5293,7 +5301,8 @@ public final class TaggedSpotsProtos {
        * of photons that hit the sensor, rather than the number of 
        * electrons that were derived from them
        * Since this number is wavelength dependent, provide the QE
-       * for each channel (in the channel order)
+       * for each fluorophore type (in the fluorophore type order)
+       * See the description of the field channel in the Spot message below
        * </pre>
        */
       public double getQe(int index) {
@@ -5307,7 +5316,8 @@ public final class TaggedSpotsProtos {
        * of photons that hit the sensor, rather than the number of 
        * electrons that were derived from them
        * Since this number is wavelength dependent, provide the QE
-       * for each channel (in the channel order)
+       * for each fluorophore type (in the fluorophore type order)
+       * See the description of the field channel in the Spot message below
        * </pre>
        */
       public Builder setQe(
@@ -5325,7 +5335,8 @@ public final class TaggedSpotsProtos {
        * of photons that hit the sensor, rather than the number of 
        * electrons that were derived from them
        * Since this number is wavelength dependent, provide the QE
-       * for each channel (in the channel order)
+       * for each fluorophore type (in the fluorophore type order)
+       * See the description of the field channel in the Spot message below
        * </pre>
        */
       public Builder addQe(double value) {
@@ -5342,7 +5353,8 @@ public final class TaggedSpotsProtos {
        * of photons that hit the sensor, rather than the number of 
        * electrons that were derived from them
        * Since this number is wavelength dependent, provide the QE
-       * for each channel (in the channel order)
+       * for each fluorophore type (in the fluorophore type order)
+       * See the description of the field channel in the Spot message below
        * </pre>
        */
       public Builder addAllQe(
@@ -5360,7 +5372,8 @@ public final class TaggedSpotsProtos {
        * of photons that hit the sensor, rather than the number of 
        * electrons that were derived from them
        * Since this number is wavelength dependent, provide the QE
-       * for each channel (in the channel order)
+       * for each fluorophore type (in the fluorophore type order)
+       * See the description of the field channel in the Spot message below
        * </pre>
        */
       public Builder clearQe() {
@@ -5816,7 +5829,7 @@ public final class TaggedSpotsProtos {
      *
      * <pre>
      * Peak width at half height in location units
-     * for asymetric peaks, calculate the width as the square root of the 
+     * for asymmetric peaks, calculate the width as the square root of the 
      * product of the widths of the long and short axes
      * </pre>
      */
@@ -5826,7 +5839,7 @@ public final class TaggedSpotsProtos {
      *
      * <pre>
      * Peak width at half height in location units
-     * for asymetric peaks, calculate the width as the square root of the 
+     * for asymmetric peaks, calculate the width as the square root of the 
      * product of the widths of the long and short axes
      * </pre>
      */
@@ -5877,8 +5890,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float x_original = 101;</code>
      *
      * <pre>
-     * Original xyz coordinates from fitting before drift 
-     * or other correction correction
+     * Original xyz coordinates from fitting before correction
      * </pre>
      */
     boolean hasXOriginal();
@@ -5886,8 +5898,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float x_original = 101;</code>
      *
      * <pre>
-     * Original xyz coordinates from fitting before drift 
-     * or other correction correction
+     * Original xyz coordinates from fitting before correction
      * </pre>
      */
     float getXOriginal();
@@ -6606,7 +6617,7 @@ public final class TaggedSpotsProtos {
      *
      * <pre>
      * Peak width at half height in location units
-     * for asymetric peaks, calculate the width as the square root of the 
+     * for asymmetric peaks, calculate the width as the square root of the 
      * product of the widths of the long and short axes
      * </pre>
      */
@@ -6618,7 +6629,7 @@ public final class TaggedSpotsProtos {
      *
      * <pre>
      * Peak width at half height in location units
-     * for asymetric peaks, calculate the width as the square root of the 
+     * for asymmetric peaks, calculate the width as the square root of the 
      * product of the widths of the long and short axes
      * </pre>
      */
@@ -6685,8 +6696,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float x_original = 101;</code>
      *
      * <pre>
-     * Original xyz coordinates from fitting before drift 
-     * or other correction correction
+     * Original xyz coordinates from fitting before correction
      * </pre>
      */
     public boolean hasXOriginal() {
@@ -6696,8 +6706,7 @@ public final class TaggedSpotsProtos {
      * <code>optional float x_original = 101;</code>
      *
      * <pre>
-     * Original xyz coordinates from fitting before drift 
-     * or other correction correction
+     * Original xyz coordinates from fitting before correction
      * </pre>
      */
     public float getXOriginal() {
@@ -8340,7 +8349,7 @@ public final class TaggedSpotsProtos {
        *
        * <pre>
        * Peak width at half height in location units
-       * for asymetric peaks, calculate the width as the square root of the 
+       * for asymmetric peaks, calculate the width as the square root of the 
        * product of the widths of the long and short axes
        * </pre>
        */
@@ -8352,7 +8361,7 @@ public final class TaggedSpotsProtos {
        *
        * <pre>
        * Peak width at half height in location units
-       * for asymetric peaks, calculate the width as the square root of the 
+       * for asymmetric peaks, calculate the width as the square root of the 
        * product of the widths of the long and short axes
        * </pre>
        */
@@ -8364,7 +8373,7 @@ public final class TaggedSpotsProtos {
        *
        * <pre>
        * Peak width at half height in location units
-       * for asymetric peaks, calculate the width as the square root of the 
+       * for asymmetric peaks, calculate the width as the square root of the 
        * product of the widths of the long and short axes
        * </pre>
        */
@@ -8379,7 +8388,7 @@ public final class TaggedSpotsProtos {
        *
        * <pre>
        * Peak width at half height in location units
-       * for asymetric peaks, calculate the width as the square root of the 
+       * for asymmetric peaks, calculate the width as the square root of the 
        * product of the widths of the long and short axes
        * </pre>
        */
@@ -8502,8 +8511,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float x_original = 101;</code>
        *
        * <pre>
-       * Original xyz coordinates from fitting before drift 
-       * or other correction correction
+       * Original xyz coordinates from fitting before correction
        * </pre>
        */
       public boolean hasXOriginal() {
@@ -8513,8 +8521,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float x_original = 101;</code>
        *
        * <pre>
-       * Original xyz coordinates from fitting before drift 
-       * or other correction correction
+       * Original xyz coordinates from fitting before correction
        * </pre>
        */
       public float getXOriginal() {
@@ -8524,8 +8531,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float x_original = 101;</code>
        *
        * <pre>
-       * Original xyz coordinates from fitting before drift 
-       * or other correction correction
+       * Original xyz coordinates from fitting before correction
        * </pre>
        */
       public Builder setXOriginal(float value) {
@@ -8538,8 +8544,7 @@ public final class TaggedSpotsProtos {
        * <code>optional float x_original = 101;</code>
        *
        * <pre>
-       * Original xyz coordinates from fitting before drift 
-       * or other correction correction
+       * Original xyz coordinates from fitting before correction
        * </pre>
        */
       public Builder clearXOriginal() {
