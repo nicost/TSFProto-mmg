@@ -117,6 +117,9 @@ The second line of the file contains the Keys of the Spot message for the Spot d
 
 All following lines are Spot data in asci format separated by tabs (“\t”) and each Spot is on its own line (that ends with “\n”).
 
+### Extensions
+IDs 1500-2047 have been reserved for application-specific fields.  You can find an example of the use of extensions in the mmGaussian branch of [my TSFProto Github repository] (https://github.com/nicost/TSFProto/tree/mmGaussian).  The use of extensions in the derived code is not immediately obvious, there is an example in the Micro-Manager Localization Microscopy Plugin code in the class [edu.valelab.gaussianfit.data.LoadAndSave] (https://github.com/nicost/micro-manager/blob/Gaussian2/plugins/Gaussian/src/main/java/edu/valelab/gaussianfit/data/LoadAndSave.java). 
+
 ### TSF.proto file: 
 
 ~~~~
