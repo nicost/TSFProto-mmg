@@ -1,7 +1,4 @@
-protoc --java_out=java/src/main/java src/*.proto
+protoc --java_out=java/src/main/java src/MMLocM.proto
 cd java
 mvn install
 cd ..
-protoc --cpp_out=buildcpp src/TSFProto.proto 
-g++ -c buildcpp/TSFProto.pb.cc -o buildcpp/TSFProto.o
-ar cru buildcpp/libTSFProto.a buildcpp/TSFProto.o /usr/local/lib/libprotobuf.a
