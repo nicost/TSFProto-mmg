@@ -3,7 +3,7 @@
    <modelVersion>4.0.0</modelVersion>
 
    <groupId>edu.ucsf.tsf</groupId>
-   <artifactId>TSFProto</artifactId>
+   <artifactId>TSFProto-mmg</artifactId>
    <version>1.0.0</version>
    <packaging> jar</packaging>
 
